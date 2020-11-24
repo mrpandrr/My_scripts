@@ -1,0 +1,78 @@
+#   a123_apple_letters.py
+import random as rand
+import turtle as trtl
+#TODO Create a function that takes a turtle as its parameter and gives that turtle (apple)
+apple_image = "apple.gif"
+
+wn = trtl.Screen()
+wn.setup(width=0.5, height=0.5)
+wn.addshape(apple_image)
+wn.bgpic("background.gif")
+apple = trtl.Turtle()
+
+Letter = 'A' #Starting letter is A
+letters = ["a","s","d","f"]
+appleList = []
+appleLetters = []
+
+for i in range(5):
+  appleList.append(trtl.Turtle)
+  appleLetters.append(rand.choice(letters))
+
+
+def draw_apple(index):
+  appleList[index].penup()
+  appleList[index].shape(apple_image)
+  wn.tracer(False)
+  appleList[index].goto(rand.randint(-150,150),rand.randint(-30,125)) #reset position
+  appleList[index].sety(appleList[index].ycor()-30)
+  appleList[index].color("white")
+  appleLetter = letters[rand.randint(0,8)]
+  wn.onkeypress(drop_apple,appleLetter)
+  appleList[index].write(appleLetters[index], align="center",font=("Arial",62,"bold"))
+  appleList[index].sety(appleList[index].ycor()+30)
+  appleList[index].showturtle()
+  wn.tracer(True)
+  wn.update()
+
+ground_height = -162
+def drop_apple(i):
+  appleList[i].penup()
+  appleList[i].clear()
+  appleList[i].goto(apple.xcor(),ground_height)
+  x = appleList[i].xcor()
+  y = appleList[i].ycor()
+  appleList[i].hideturtle()
+  draw_apple(i)
+
+def typedA():
+  for i in range(5):
+    if appleLetters[i] == 'a':
+      drop_apple(i)
+def typedS():
+  for i in range(5):
+    if appleLetters[i] == 's':
+      drop_apple(i)
+def typedD():
+  for i in range(5):
+    if appleLetters[i] == 'd':
+      drop_apple(i)
+def typedF():
+  for i in range(5):
+    if appleLetters[i] == 'f':
+      drop_apple(i)
+def draw_an_A(index):
+  appleList[index].write(appleLetters[index], align="center",font=("Arial",62,"bold"))
+
+for i in range(5):
+  draw_apple(i)
+
+
+wn.onkeypress(typedA,'a')
+wn.onkeypress(typedS,'s')
+wn.onkeypress(typedD,'d')
+wn.onkeypress(typedF,'f')
+
+wn.listen()
+
+wn.mainloop()
