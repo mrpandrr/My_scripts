@@ -48,12 +48,12 @@ def checkboundary():
         print(distancexapple)
         print(distanceyapple)
         print("check",distancexapple)
-        if(distanceyapple > 200 or distanceyapple < -200 or distancexapple > 200 or distancexapple < -200):
+        if(distanceyapple > 199 or distanceyapple < -199 or distancexapple > 199 or distancexapple < -199):
                 wn.clear()
                 apple.goto(0,0)
                 tron.goto(0,0)
                 apple.write("Game over tron1 left the screen", align = ("center"), font = ("Arial",52,"bold"))
-        if(distanceytron > 200 or distanceytron < -200 or distancextron > 200 or distancextron < -200):
+        if(distanceytron > 199 or distanceytron < -199 or distancextron > 199 or distancextron < -199):
                 wn.clear()
                 apple.goto(0,0)
                 tron.goto(0,0)
@@ -64,25 +64,31 @@ appleTwoList = []
 tronOneList = []
 tronTwoList = []
 x = []
+
+weareat = 0 
 def moveapple():
         appleOneList.append(apple.xcor())
         appleTwoList.append(apple.ycor())
-        checkCollision()
         checkboundary()
         print(appleOneList)
         print(appleTwoList)
 def movetron():
         tronOneList.append(tron.xcor())
         tronTwoList.append(tron.ycor())
-        checkCollision()
         print(tronTwoList)
         print(tronOneList)
-def checkCollision():
-        for one in appleOneList:
-                for two in tronOneList:
-                        if(one == two):
-                                print("x's are equal")
-                                
+"""def checkCollision():
+        applenumber = int(len.appleTwoList) - 1 
+        tronnumber  = int(len.tronTwoList) - 1
+        xdistance = abs(appleOneList[applenumber] - tronOneList[tronnumber])
+        ydistance = abs(tronTwoList[tronnumber] - appleTwoList[tronnumber])
+        if(xdistance < 15 and ydistance < 15):
+                wn.clear()
+                apple.goto(0,0)
+                tron.goto(0,0)
+                apple.write("Collision you failed", align = ("center"), font = ("Arial",52,"bold"))"""
+                
+
 
 def checkCollision7():
         lena = int(len(appleOneList))
